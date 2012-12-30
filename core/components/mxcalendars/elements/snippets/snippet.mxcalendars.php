@@ -78,6 +78,9 @@ $calendarFilter = isset($_REQUEST['calf']) ? $_REQUEST['calf'] : $modx->getOptio
 $contextFilter = isset($_REQUEST['conf']) ? $_REQUEST['conf'] : $modx->getOption('contextFilter',$scriptProperties, ','.$modx->context->key);//-- Defaults to current context + (blank for all)
 //++ Form Chunk Filter match name
 $formFilter = $modx->getOption('formFilter',$scriptProperties,'form_');
+//++ mac 2012-12-30 Filter against categories
+$categoryFilter = isset($_REQUEST['calf']) ? $_REQUEST['calf'] : $modx->getOption('categoryFilter', $scriptProperties, null); //-- Default: show all categories
+
 
 //-- Update to the Timezone
 $mxcal->setTimeZone($setTimezone,$debugTimezone);
@@ -168,6 +171,9 @@ switch ($displayType){
 $whereArr['AND:context:IN'] = explode(',',$contextFilter);
 if(!empty($calendarFilter))
     $whereArr['AND:calendar_id:IN'] = explode(',',$calendarFilter);
+//--mac 2012-12-30
+if(!empty($categoryFilter))
+    $whereArr['AND:CategoryId:IN'] = explode(',',$categoryFilter);
 
                         
 if($_REQUEST['cid'] && ($displayType == 'calendar' || $displayType == 'mini'))
@@ -314,7 +320,7 @@ switch ($displayType){
     case 'calendar':
     case 'mini':
     default:
-        $output = $mxcal->makeEventCalendar($eventsArr,(!empty($ajaxResourceId) && $modalView? $ajaxResourceId : $resourceId),(!empty( $ajaxMonthResourceId) ?  $ajaxMonthResourceId : (!empty($ajaxResourceId) ? $ajaxResourceId : $resourceId) ),array('event'=>$tplEvent,'day'=>$tplDay,'week'=>$tplWeek,'month'=>$tplMonth,'heading'=>$tplHeading), $contextFilter, $calendarFilter, $highlightToday);
+        $output = $mxcal->makeEventCalendar($eventsArr,(!empty($ajaxResourceId) && $modalView? $ajaxResourceId : $resourceId),(!empty( $ajaxMonthResourceId) ?  $ajaxMonthResourceId : (!empty($ajaxResourceId) ? $ajaxResourceId : $resourceId) ),array('event'=>$tplEvent,'day'=>$tplDay,'week'=>$tplWeek,'month'=>$tplMonth,'heading'=>$tplHeading), $contextFilter, $calendarFilter, $categoryFilter, $highlightToday);
         break;
     case 'detail':
         if($debug) $output .= 'Total Occurances: '.count($eventsArr).' for Event ID: '.$_REQUEST['detail'].'<br />';
