@@ -1,5 +1,4 @@
 <?php
-
 $mxcal = $modx->getService('mxcalendars','mxCalendars',$modx->getOption('mxcalendars.core_path',null,$modx->getOption('core_path').'components/mxcalendars/').'model/mxcalendars/',$scriptProperties);
 if (!($mxcal instanceof mxCalendars)) return 'Error loading instance of mxCalendars.';
 
@@ -173,7 +172,7 @@ if(!empty($calendarFilter))
     $whereArr['AND:calendar_id:IN'] = explode(',',$calendarFilter);
 //--mac 2012-12-30
 if(!empty($categoryFilter))
-    $whereArr['AND:CategoryId:IN'] = explode(',',$categoryFilter);
+    $whereArr['AND:CategoryId.id:IN'] = explode(',',$categoryFilter);
 
                         
 if($_REQUEST['cid'] && ($displayType == 'calendar' || $displayType == 'mini'))
