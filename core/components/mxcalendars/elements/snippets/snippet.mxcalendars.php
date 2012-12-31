@@ -79,6 +79,8 @@ $contextFilter = isset($_REQUEST['conf']) ? $_REQUEST['conf'] : $modx->getOption
 $formFilter = $modx->getOption('formFilter',$scriptProperties,'form_');
 //++ mac 2012-12-30 Filter against categories
 $categoryFilter = isset($_REQUEST['calf']) ? $_REQUEST['calf'] : $modx->getOption('categoryFilter', $scriptProperties, null); //-- Default: show all categories
+//++ mac 2012-12-30 Filter against reoccuring events
+$reoccuringFilter = isset($_REQUEST['calf']) ? $_REQUEST['calf'] : $modx->getOption('reoccuringFilter', $scriptProperties, null); //-- Default: show all reoccuring events
 
 
 //-- Update to the Timezone
@@ -252,19 +254,24 @@ foreach ($mxcalendars as $mxc) {
     
     $arrEventsDetail[$mxcArray['id']] = $mxcArray;
     $arrEventDates[$mxcArray['id']] = array('date'=>$mxcArray['startdate'], 'eventId'=>$mxcArray['id'],'repeatId'=>0);
-    
+
+
     //-- If we have repeating dates and repeating is enabled lets add those to the array
     if($mxcArray['repeating'] && count(explode(',', $mxcArray['repeatdates']))){
-        if($debug) echo 'Repeating Event: '.$mxcArray['title'].'<br />';
-        if($debug) echo '&nbsp;&nbsp;&nbsp;++(0)&nbsp;&nbsp;'.strftime($dateFormat.' '.$timeFormat, $mxcArray['startdate']).'<br>';
-        $rid = 1;
-        foreach(explode(',',$mxcArray['repeatdates']) AS $rDate){
-            $arrEventDates[$mxcArray['id'].'-'.$rid] = array('date'=>$rDate, 'eventId'=>$mxcArray['id'],'repeatId'=>$rid);
-            if($debug) echo '&nbsp;&nbsp;&nbsp;++('.$rid.')&nbsp;&nbsp;'.strftime($dateFormat.' '.$timeFormat, $rDate).'<br>';
-            $rid++;
-        }
-    }
-   
+
+		//-- If reoccuringFilter is set, skip here
+		if($reoccuringFilter != 1 ) {
+	
+			if($debug) echo 'Repeating Event: '.$mxcArray['title'].'<br />';
+			if($debug) echo '&nbsp;&nbsp;&nbsp;++(0)&nbsp;&nbsp;'.strftime($dateFormat.' '.$timeFormat, $mxcArray['startdate']).'<br>';
+			$rid = 1;
+			foreach(explode(',',$mxcArray['repeatdates']) AS $rDate){
+				$arrEventDates[$mxcArray['id'].'-'.$rid] = array('date'=>$rDate, 'eventId'=>$mxcArray['id'],'repeatId'=>$rid);
+				if($debug) echo '&nbsp;&nbsp;&nbsp;++('.$rid.')&nbsp;&nbsp;'.strftime($dateFormat.' '.$timeFormat, $rDate).'<br>';
+				$rid++;
+			}
+		}
+   }
     //$output .= $mxcal->getChunk($tpl,$mxcArray);
 }
 
