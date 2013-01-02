@@ -49,6 +49,30 @@ Ext.extend(mxcCore.combo.Categories,MODx.combo.ComboBox);
 Ext.reg('mxc-combo-categories',mxcCore.combo.Categories);
 
 
+mxcCore.combo.Locations = function(config) {
+    config = config || {};
+    Ext.applyIf(config,{
+        store: new Ext.data.JsonStore({
+              root: 'results',
+              idProperty: 'id',
+              url: mxcCore.config.connectorUrl,
+              baseParams: {
+                    action: 'stores/getlocations'  
+              },
+              fields: [
+                    'id', 'name'
+              ]
+        })
+        ,mode: 'remote'
+        ,displayField: 'name'
+        ,valueField: 'id'
+    });
+    mxcCore.combo.Locations.superclass.constructor.call(this,config);
+};
+Ext.extend(mxcCore.combo.Locations,MODx.combo.ComboBox);
+Ext.reg('mxc-combo-locations',mxcCore.combo.Locations);
+
+
 mxcCore.combo.Section = function(config) {
     config = config || {};
     Ext.applyIf(config,{

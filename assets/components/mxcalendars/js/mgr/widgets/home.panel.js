@@ -40,6 +40,18 @@ mxcCore.panel.Home = function(config) {
                         ,preventRender: true
                     }]
                 },{
+                //-- Locations Tab
+                title: _('mxcalendars.tab_locations')
+                ,defaults: { autoHeight: true }
+                    ,items: [{
+                        html: '<p>'+_('mxcalendars.location_desc')+'</p><br />'
+                       ,border: false
+                    },{
+                        xtype: 'mxcalendars-grid-locations'
+                        ,preventRender: true
+                    }]
+                },{
+
                 //-- Calendars Tab
                 title: _('mxcalendars.tab_calendars')
                 ,items: [{

@@ -4,18 +4,20 @@ $_lang['mxcalendars.desc'] = 'Verwalten Sie Ihre Kalendereinträge hier.';
 $_lang['mxcalendars.name'] = 'Name';
 $_lang['mxcalendars.description'] = 'Beschreibung';
 $_lang['mxcalendars.management'] = 'mxCalendar Manager';
-$_lang['mxcalendars.management_desc'] = 'Verwalten Sie Ihre Kalendereinträge hier. Sie können Sie entweder durch Doppelklicken auf das Raster oder durch Rechtsklicken auf die entsprechende Zeile weitere Optionen aufrufen.';
+$_lang['mxcalendars.management_desc'] = 'Verwalten Sie Ihre Kalendereinträge.<br />';
 $_lang['mxcalendars.event_title_create'] = 'Neues Ereignis anlegen';
 $_lang['mxcalendars.event_title_update'] = 'Ereignis aktualisieren';
 $_lang['mxcalendars.event_title_duplicate'] = 'Ereignis duplizieren';
 $_lang['mxcalendars.event_title_remove'] = 'Ereignis löschen';
 $_lang['mxcalendars.tab_events'] = 'Ereignisse';
 $_lang['mxcalendars.tab_categories'] = 'Kategorien';
+$_lang['mxcalendars.tab_locations'] = 'Veranstaltungsort';
 $_lang['mxcalendars.tab_settings'] = 'Globale Einstellungen';
 $_lang['mxcalendars.tab_calendars'] = 'Kalender';
-$_lang['mxcalendars.grid_col_context'] = 'Site (Kontext)';
+$_lang['mxcalendars.grid_col_context'] = 'Kontext';
 $_lang['mxcalendars.grid_col_title'] = 'Titel';
 $_lang['mxcalendars.grid_col_category'] = 'Kategorie';
+$_lang['mxcalendars.grid_col_location'] = 'Ort';
 $_lang['mxcalendars.grid_col_start'] = 'Start Datum/Zeit';
 $_lang['mxcalendars.grid_col_end'] = 'Ende Datum/Zeit';
 $_lang['mxcalendars.grid_col_repeate'] = 'Wiederholen/wiederkehrend';
@@ -25,8 +27,8 @@ $_lang['mxcalendars.btn_display_past_events'] = 'vergangene Ereignisse anzeigen'
 $_lang['mxcalendars.btn_create'] = 'Neuen Kalendereintrag erzeugen';
 $_lang['mxcalendars.label_product'] = 'Produkt';
 $_lang['mxcalendars.label_industry'] = 'Industrie';
-$_lang['mxcalendars.label_select_context'] = 'Wählen Sie einen Kontext, oder für alle freilassen';
-$_lang['mxcalendars.label_select_calendar'] = 'Wählen Sie einen Kalender aus';
+$_lang['mxcalendars.label_select_context'] = 'Kontext wählen, oder für alle freilassen';
+$_lang['mxcalendars.label_select_calendar'] = 'Kalender auswählen';
 $_lang['mxcalendars.label_today'] = 'heute';
 $_lang['mxcalendars.label_repeating_event'] = 'wiederholendes Ereignis';
 $_lang['mxcalendars.label_repeat_type'] = 'findet statt';
@@ -58,12 +60,13 @@ $_lang['mxcalendars.label_forms'] = 'Formular';
 $_lang['mxcalendars.err_ae'] = 'Ein Kalendereintrag mit diesem Namen existiert bereits.';
 $_lang['mxcalendars.err_nf'] = 'Die ID des Elements wurde nicht gefunden.';
 $_lang['mxcalendars.err_ns'] = 'Der Eintrag für die Aktualisierung wurde nicht gefunden.';
-$_lang['mxcalendars.err_ns_name'] = 'Bitte geben Sie einen Namen für den Kalendereintrag an.';
-$_lang['mxcalendars.err_ns_title'] = 'Bitte geben Sie einen Titel für den Kalendereintrag an.';
-$_lang['mxcalendars.err_remove'] = 'Während des Löschens des Kalendereintrags ist ein Fehler aufgetreten.';
-$_lang['mxcalendars.err_save'] = 'Während des Speicherns des Kalendereintrags ist ein Fehler aufgetreten.';
+$_lang['mxcalendars.err_ns_name'] = 'Bitte geben Sie einen Namen für das Kalenderereignis an.';
+$_lang['mxcalendars.err_ns_title'] = 'Bitte geben Sie einen Titel für die Kalenderinstanz an.';
+$_lang['mxcalendars.err_remove'] = 'Während des Löschens der Kalenderinstanz ist ein Fehler aufgetreten.';
+$_lang['mxcalendars.err_save'] = 'Während des Speicherns der Kalenderinstanz ist ein Fehler aufgetreten.';
 $_lang['mxcalendars.err_event_req_name'] = 'Name wird benötigt';
 $_lang['mxcalendars.err_event_req_category'] = 'Kategorie wird benötigt';
+$_lang['mxcalendars.err_event_req_location'] = 'Veranstaltungsort wird benötigt';
 $_lang['mxcalendars.err_event_req_startdate'] = 'Startdatum wird benötigt';
 $_lang['mxcalendars.err_event_req_starttime'] = 'Startzeit wird benötigt';
 $_lang['mxcalendars.err_event_req_enddate'] = 'Enddatum wird benötigt';
@@ -74,12 +77,13 @@ $_lang['mxcalendars.err_event_req_repeatfrequency'] = 'wiederholen alle, Frequen
 $_lang['mxcalendars.err_event_req_repeatenddate'] = 'Das Enddatum für das wiederkehrende Ereignis wird benötigt';
 $_lang['mxcalendars.err_event_req_repeaton'] = 'Findet statt an / auswahl wird benötigt für wöchentliche wiederkehrende Ereignisse';
 $_lang['mxcalendars.err_event_req_validcat'] = 'Es wurde keine gültige Kategorien-ID für die Typen standard oder veröffentlicht gefunden, bitte stellen Sie sicher, dass Sie eine gültige Kategorie erstellt haben.';
-$_lang['mxcalendars.mxcalendars_remove_confirm'] = 'Wollen Sie diesen Kalendereintrags wirklich löchen?';
+$_lang['mxcalendars.mxcalendars_remove_confirm'] = 'Wollen Sie diese Kalenderinstanz wirklich löchen?';
 $_lang['mxcalendars.downloads'] = 'Downloads';
 $_lang['mxcalendars.location'] = 'Ort';
-$_lang['mxcalendars.search_default_text'] = 'Ereignisse durchsuchen...';
+$_lang['mxcalendars.search_default_text'] = 'Suche...';
 $_lang['mxcalendars.top_downloaded'] = 'Meist geladene Kalender';
 $_lang['mxcalendars.categoryid_col_label'] = 'Kategorie';
+$_lang['mxcalendars.locationid_col_label'] = 'Veranstaltungsort';
 $_lang['mxcalendars.startdate_col_label'] = 'Startdatum';
 $_lang['mxcalendars.starttime_col_label'] = 'Startzeit';
 $_lang['mxcalendars.enddate_col_label'] = 'Enddatum';
@@ -92,12 +96,14 @@ $_lang['mxcalendars.label_starttime'] = 'Startzeit';
 $_lang['mxcalendars.label_title'] = 'Name / Titel';
 $_lang['mxcalendars.label_enddate'] = 'Ende Datum/Zeit';
 $_lang['mxcalendars.label_duplicate'] = 'duplizieren';
-$_lang['mxcalendars.label_select_category'] = 'wählen Sie eine Kategorie';
-$_lang['mxcalendars.label_select_category_err'] = 'wählen Sie eine gültige Kategorie';
+$_lang['mxcalendars.label_select_category'] = 'Kategorie wählen';
+$_lang['mxcalendars.label_select_location'] = 'Ort wählen';
+$_lang['mxcalendars.label_select_category_err'] = 'Wählen Sie eine Kategorie';
+$_lang['mxcalendars.label_select_location_err'] = 'Wählen Sie einen Veranstaltungsort';
 $_lang['mxcalendars.label_calendar_id'] = 'Kalender ID';
 
-$_lang['mxcalendars.label_select_form'] = 'wählen Sie ein Formular aus';
-$_lang['mxcalendars.label_select_form_err'] = 'wählen Sie einen gültigen Formular Chunk aus';
+$_lang['mxcalendars.label_select_form'] = 'Formular auswählen';
+$_lang['mxcalendars.label_select_form_err'] = 'wählen Sie einen gültigen Formular-Chunk aus';
 
 $_lang['mxcalendars.btn_show_past_events'] = 'zeige vergangene Ereignisse';
 $_lang['mxcalendars.btn_show_upcoming_events'] = 'zeige kommende Ereignisse';
@@ -115,14 +121,38 @@ $_lang['mxcalendars.category_inlinecss_col_label'] = 'Inline CSS';
 $_lang['mxcalendars.category_disabled_col_label'] = 'Deaktiviert';
 $_lang['mxcalendars.category_active_col_label'] = 'Aktiviert';
 $_lang['mxcalendars.cateogry_remove_title'] = 'Kategorie entfernen';
-$_lang['mxcalendars.cateogry_remove_confirm'] = 'Sind Sie sicher, dass Sie diese Kategorie entfernen wollen?';
+$_lang['mxcalendars.cateogry_remove_confirm'] = 'Sind sie sicher, dass sie diese Kategorie entfernen wollen?';
 $_lang['mxcalendars.btn_create_cat'] = 'Neue Kategorie erzeugen';
-$_lang['mxcalendars.default_category_search'] = "Suche Kategorie(n)...";
+$_lang['mxcalendars.default_category_search'] = "Suche...";
 $_lang['mxcalendars.menu_update_category'] = 'Kategorie aktualisieren';
 $_lang['mxcalendars.menu_remove_category'] = 'Kategorie entfernen';
 
 $_lang['mxcalendars.label_category_heading'] = 'Kategorien:';
 $_lang['mxcalendars.label_category_viewAll'] = 'alle anzeigen';
+
+//-- Location Management
+$_lang['mxcalendars.location_desc'] = 'Veranstaltungsorte verwalten, die jedem Kalenderereignis zugewiesen werden können.';
+$_lang['mxcalendars.label_window_create'] = 'Neuen Veranstaltungsort erstellen';
+$_lang['mxcalendars.location_name_col_label'] = 'Name';
+$_lang['mxcalendars.location_zip_col_label'] = 'PLZ';
+$_lang['mxcalendars.location_place_col_label'] = 'Stadt';
+$_lang['mxcalendars.location_link_col_label'] = 'externer Link';
+$_lang['mxcalendars.location_isdefault_col_label'] = 'Ist Standard';
+$_lang['mxcalendars.location_foregroundcss_col_label'] = 'Text Farbe';
+$_lang['mxcalendars.location_backgroundcss_col_label'] = 'Hintergrundfarbe';
+$_lang['mxcalendars.location_inlinecss_col_label'] = 'Inline CSS';
+$_lang['mxcalendars.location_disabled_col_label'] = 'Deaktiviert';
+$_lang['mxcalendars.location_active_col_label'] = 'Aktiviert';
+$_lang['mxcalendars.location_remove_title'] = 'Veranstaltungsort entfernen';
+$_lang['mxcalendars.location_remove_confirm'] = 'Sind sie sicher, dass sie diesen Veranstaltungsort entfernen wollen?';
+$_lang['mxcalendars.btn_create_loc'] = 'Neuen Veranstaltungort erzeugen';
+$_lang['mxcalendars.default_location_search'] = "Suche...";
+$_lang['mxcalendars.menu_update_location'] = 'Veranstaltungsort aktualisieren';
+$_lang['mxcalendars.menu_remove_location'] = 'Veranstaltungsort entfernen';
+
+$_lang['mxcalendars.label_location_heading'] = 'Veranstaltungsorte:';
+$_lang['mxcalendars.label_location_viewAll'] = 'alle anzeigen';
+
 
 //-- Settings friendly names
 $_lang['mxcalendars.set_category_required'] = 'Dieses Ereignis erfordert eine Kategorie';
@@ -131,12 +161,12 @@ $_lang['mxcalendars.set_mgr_dateformat'] = 'Datum Format';
 $_lang['mxcalendars.set_mgr_timeformat'] = 'Time Format';
 
 //-- Calendar Management
-$_lang['mxcalendars.calendar_desc'] = 'Kalender verwalten, denen Ereignisse zugewiesen werden können. Erzeugen Sie soviele, wie benötigt.';
+$_lang['mxcalendars.calendar_desc'] = 'Kalender verwalten, denen Ereignisse zugewiesen werden können.';
 
-$_lang['mxcalendars.err_ac'] = 'Fehler beim Speichern! Bitte versuchen Sie es erneut!';
+$_lang['mxcalendars.err_ac'] = 'Fehler beim Speichern! Bitte versuchen sie es erneut!';
 $_lang['mxcalendars.calendar_name_col_label'] = 'Name';
 $_lang['mxcalendars.calendar_name_col_active'] = 'aktiv';
-$_lang['mxcalendars.calendar_default_calendar_search'] = 'suchen ...';
+$_lang['mxcalendars.calendar_default_calendar_search'] = 'Suche ...';
 $_lang['mxcalendars.calendar_btn_create'] = 'neuen Kalender erstellen';
 
 
@@ -146,3 +176,28 @@ $_lang['mxcalendars.calendar_context_menu_remove'] = 'entfernen';
 $_lang['mxcalendars.label_select_calendar'] = 'Kalender auswählen';
 $_lang['mxcalendars.label_select_calendar_err'] = 'Kalender nicht gefunden!';
 $_lang['mxcalendars.grid_col_calendar'] = 'Kalender';
+
+//-- Feed lexicon entries
+$_lang['mxcalendars.tab_feed'] = 'Feeds'; 
+$_lang['mxcalendars.feed_desc'] = 'Eingabe eines externen iCal Kalenders oder einer gültigen URL eines XML-Feeds.'; 
+
+$_lang['mxcalendars.default_feed_search'] = 'Suche ...';
+$_lang['mxcalendars.feed_btn_create'] = 'Neuen Feed erstellen';
+$_lang['mxcalendars.feed_menu_update'] = 'Feed aktualisieren';
+$_lang['mxcalendars.feed_menu_remove'] = 'Feed löschen';
+$_lang['mxcalendars.feed_remove_title'] = 'Feed löschen bestätigen';
+$_lang['mxcalendars.feed_remove_confirm'] = 'Die folgende Aktion wird den Feed endgültig aus der Datenbank löschen.';
+$_lang['mxcalendars.feed_col_feed'] = 'Feed URL';
+$_lang['mxcalendars.feed_col_active'] = 'Aktiv';
+$_lang['mxcalendars.feed_col_type'] = 'Typ';
+$_lang['mxcalendars.lastrunon_col_label'] = 'Letzter Update';
+$_lang['mxcalendars.nextrunon_col_label'] = 'Nächstes Update';
+$_lang['mxcalendars.label_default'] = 'Default';
+$_lang['mxcalendars.source'] = 'Quelle';
+$_lang['mxcalendars.label_feedmeasurementtime'] = 'Geben Sie die Einheiten an';
+$_lang['mxcalendars.label_feedmeasurementtype'] = 'Art des Timers';
+
+$_lang['mxcalendars.feed_type_label_select_empty'] = '--auswählen--';
+$_lang['mxcalendars.measurement_type_label_select_empty'] = '--auswählen--';
+
+?>

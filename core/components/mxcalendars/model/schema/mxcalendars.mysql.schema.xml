@@ -26,6 +26,7 @@
                         
         <field key="context" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
         <field key="calendar_id" dbtype="int" precision="20" phptype="integer" null="true" default="" />
+        <field key="location_id" dbtype="int" precision="20" phptype="integer" null="true" default="" />
         <field key="form_chunk" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
         
 	<field key="createdon" dbtype="int" precision="20" phptype="integer" null="true"/>
@@ -104,5 +105,28 @@
         <field key="log" dbtype="text" phptype="string" null="false" default=""/>
         <field key="datetime" dbtype="int" precision="20" phptype="integer" null="true"/>
     </object>
+
+    <object class="mxCalendarLocations" table="mxcalendars_locations" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="zip" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="place" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="link" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="isdefault" dbtype="boolean" phptype="boolean" null="false" default="0"/>
+        <field key="foregroundcss" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="backgroundcss" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="inlinecss" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="disable" dbtype="boolean" phptype="boolean" null="false" default="0"/>
+        <field key="active" dbtype="boolean" phptype="boolean" null="false" default="1"/>
+
+        <field key="createdon" dbtype="int" precision="20" phptype="integer" null="true"/>
+        <field key="createdby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="editedon" dbtype="int" precision="20" phptype="integer" null="true"/>
+        <field key="editedby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
+
+	<aggregate alias="LocationId" class="mxCalendarEvents" local="id" foreign="locationid" cardinality="many" owner="local"/>
+        <aggregate alias="CreatedBy" class="modUser" local="createdby" foreign="id" cardinality="one" owner="foreign"/>
+        <aggregate alias="EditedBy" class="modUser" local="editedby" foreign="id" cardinality="one" owner="foreign"/>
+    </object>
+
     
 </model>

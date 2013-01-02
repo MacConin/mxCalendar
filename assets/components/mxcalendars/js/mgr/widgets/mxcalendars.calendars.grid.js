@@ -19,7 +19,7 @@ mxcCore.grid.calendars = function(config) {
         ,anchor: '97%'
         ,autoExpandColumn: 'name'
         ,save_action: 'mgr/calendar/updatefromgrid' // Support the inline editing
-	,autosave: true // Support the inline editing
+		,autosave: true // Support the inline editing
         ,columns: [{
             header: _('id')
             ,dataIndex: 'id'

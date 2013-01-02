@@ -4,13 +4,13 @@ mxcCore.grid.events = function(config) {
         id: 'mxcalendars-grid-events'
         ,url: mxcCore.config.connectorUrl
         ,baseParams: {action: 'mgr/events/getList'}
-        ,fields: ['id','description','title','context','calendar_id','form_chunk','categoryid','source','feeds_id','feeds_uid',{name:'startdate', type: 'date', dateFormat:'timestamp'},'startdate_date','startdate_time',{name:'enddate', type: 'date', dateFormat:'timestamp'},'enddate_date','enddate_time','repeating','repeattype','repeaton','repeatfrequency',{name:'repeatenddate', type: 'date', dateFormat:'timestamp'},'repeatdates','menu','name','map','link','linkrel','linktarget','location_name','location_address','address','active']
+        ,fields: ['id','description','title','context','calendar_id','form_chunk','categoryid','location_id','source','feeds_id','feeds_uid',{name:'startdate', type: 'date', dateFormat:'timestamp'},'startdate_date','startdate_time',{name:'enddate', type: 'date', dateFormat:'timestamp'},'enddate_date','enddate_time','repeating','repeattype','repeaton','repeatfrequency',{name:'repeatenddate', type: 'date', dateFormat:'timestamp'},'repeatdates','menu','name','map','link','linkrel','linktarget','location_name','location_address','address','active']
         ,paging: true
         ,remoteSort: true
         ,anchor: '97%'
         ,autoExpandColumn: 'name'
         ,save_action: 'mgr/events/updatefromgrid' // Support the inline editing
-	,autosave: true // Support the inline editing
+        ,autosave: true // Support the inline editing
         ,columns: [
 			// add the grid columns to the display
 			 {header: _('id'),dataIndex: 'id',sortable: true,width:40}
@@ -19,6 +19,7 @@ mxcCore.grid.events = function(config) {
                         ,{header: _('mxcalendars.grid_col_context'), dataIndex:'context',editor: { xtype: 'mxc-combo-context', renderer: true }}
                         ,{header: _('mxcalendars.grid_col_calendar'), dataIndex:'calendar_id',editor: { xtype: 'mxc-combo-calendar', renderer: true }}
                         ,{header: _('mxcalendars.categoryid_col_label'),dataIndex: 'categoryid',sortable: true,width:80,editor: { xtype: 'mxc-combo-categories', renderer: true }}
+                        ,{header: _('mxcalendars.locationid_col_label'),dataIndex: 'location_id',sortable: true,width:80,editor: { xtype: 'mxc-combo-locations', renderer: true }}
 			//,{header: _('mxcalendars.startdate_col_label'),dataIndex: 'startdate',sortable: true}
 			,{header: _('mxcalendars.startdate_col_label'),dataIndex: 'startdate',sortable: true,width:60, xtype : 'datecolumn',format:mxcCore.config.mgr_dateformat, editable:false, editor:{xtype:'datefield', format:mxcCore.config.mgr_dateformat}}
 			,{header: _('mxcalendars.starttime_col_label'), dataIndex: 'startdate_time', sortable:false,width:60, editor:{ xtype:'timefield', format: mxcCore.config.mgr_timeformat}}
@@ -268,6 +269,35 @@ mxcCore.window.CreateCal = function(config) {
 			      valueNotFoundText:_('mxcalendars.label_select_category_err'),
 			      anchor:'100%',
                               value: config.record.categoryid
+			    },{
+			      xtype: 'combo',
+			      displayField: 'name',
+			      valueField: 'id',
+			      forceSelection: true,
+			      store: new Ext.data.JsonStore({
+				      root: 'results',
+				      idProperty: 'id',
+				      url: mxcCore.config.connectorUrl,
+				      baseParams: {
+					    action: 'stores/getlocations' 
+				      },
+				      fields: [
+					    'id', 'name'
+				      ]
+			      }),
+			      mode: 'remote',
+			      triggerAction: 'all',
+			      fieldLabel: _('mxcalendars.grid_col_location'),
+			      name: 'location_id',
+                              hiddenName: 'location_id',
+                              id: 'clocation_id',
+			      allowBlank: mxcCore.config.location_required ? true : false,
+			      typeAhead:true,
+			      minChars:1,
+			      emptyText:_('mxcalendars.label_select_location'),
+			      valueNotFoundText:_('mxcalendars.label_select_location_err'),
+			      anchor:'100%',
+                              value: config.record.location_id
 			    }]
 			},{
 			  // Right Column
@@ -384,16 +414,16 @@ mxcCore.window.CreateCal = function(config) {
                             layout:'fill'
                         },
                         listeners: {
-                            'beforecollapse' :  function(panel,ani) {
-                                // Hide all the form fields you need to hide 
+                            'beforecollapse' :  function(panel,ani) {
+                                // Hide all the form fields you need to hide 
                                 Ext.getCmp('crepeating').setValue(0);
-                                return true; // this will avoid collapse of the field set
-                            },
-                            'beforeexpand' : function(panel,ani) {
-                                // Display all the fields
-                                Ext.getCmp('crepeating').setValue(1);
+                                return true; // this will avoid collapse of the field set
+                            },
+                            'beforeexpand' : function(panel,ani) {
+                                // Display all the fields
+                                Ext.getCmp('crepeating').setValue(1);
                                 return true; // this will avoid the default expand behaviour
-                            } 
+                            } 
                         },
                         layout: 'form',
 			items :[{name: 'repeating',id: 'crepeating',xtype:'hidden',value:config.record.repeating?1:0},{
@@ -632,6 +662,7 @@ mxcCore.window.CreateCal = function(config) {
                         title: Ext.getCmp('ctitle').getValue() //req
                         ,description: Ext.getCmp('cdescription').getValue()
                         ,categoryid: Ext.getCmp('ccategoryid').getValue() //req
+                        ,location_id: Ext.getCmp('clocation_id').getValue() //req
 			,startdate_date: Ext.getCmp('cstartdate_date').getValue() //req
 			,startdate_time: Ext.getCmp('cstartdate_time').getValue() //req
                         ,enddate_date: Ext.getCmp('cenddate_date').getValue() //req
@@ -817,6 +848,35 @@ mxcCore.window.UpdateCal = function(config) {
 			      valueNotFoundText:_('mxcalendars.label_select_category_err'),
 			      anchor:'100%',
                               value: config.record.categoryid
+			    },{
+			      xtype: 'combo',
+			      displayField: 'name',
+			      valueField: 'id',
+			      forceSelection: true,
+			      store: new Ext.data.JsonStore({
+				      root: 'results',
+				      idProperty: 'id',
+				      url: mxcCore.config.connectorUrl,
+				      baseParams: {
+					    action: 'stores/getlocations' 
+				      },
+				      fields: [
+					    'id', 'name'
+				      ]
+			      }),
+			      mode: 'remote',
+			      triggerAction: 'all',
+			      fieldLabel: _('mxcalendars.grid_col_location'),
+			      name: 'location_id',
+                              hiddenName: 'location_id',
+                              id: 'location_id',
+			      allowBlank: mxcCore.config.location_required ? true : false,
+			      typeAhead:true,
+			      minChars:1,
+			      emptyText:_('mxcalendars.label_select_location'),
+			      valueNotFoundText:_('mxcalendars.label_select_location_err'),
+			      anchor:'100%',
+                              value: config.record.location_id
 			    }]
 			},{
 			  // Right Column
@@ -847,7 +907,7 @@ mxcCore.window.UpdateCal = function(config) {
                               typeAhead:true,
                               minChars:1,
                               emptyText:_('mxcalendars.label_select_calendar'),
-                              valueNotFoundText:_('mxcalendars.label_select_category_err'),
+                              valueNotFoundText:_('mxcalendars.label_select_calendar_err'),
                               anchor:'100%',
                               value: config.record.calendar_id
                             },{
@@ -933,16 +993,16 @@ mxcCore.window.UpdateCal = function(config) {
                             layout:'fill'
                         },
                         listeners: {
-                            'beforecollapse' :  function(panel,ani) {
-                                // Hide all the form fields you need to hide 
+                            'beforecollapse' :  function(panel,ani) {
+                                // Hide all the form fields you need to hide 
                                 Ext.getCmp('repeating').setValue(0);
-                                return true; // this will avoid collapse of the field set
-                            },
-                            'beforeexpand' : function(panel,ani) {
-                                // Display all the fields
-                                Ext.getCmp('repeating').setValue(1);
+                                return true; // this will avoid collapse of the field set
+                            },
+                            'beforeexpand' : function(panel,ani) {
+                                // Display all the fields
+                                Ext.getCmp('repeating').setValue(1);
                                 return true; // this will avoid the default expand behaviour
-                            } 
+                            } 
                         },
                         layout: 'form',
 			items :[{name: 'repeating',id: 'repeating',xtype:'hidden',value:config.record.repeating?1:0},{
@@ -1179,6 +1239,7 @@ mxcCore.window.UpdateCal = function(config) {
                         ,title: Ext.getCmp('title').getValue()
                         ,description: Ext.getCmp('description').getValue()
                         ,categoryid: Ext.getCmp('categoryid').getValue()
+                        ,location_id: Ext.getCmp('location_id').getValue()
 			,startdate_date: Ext.getCmp('startdate_date').getValue()
 			,startdate_time: Ext.getCmp('startdate_time').getValue()
                         ,enddate_date: Ext.getCmp('enddate_date').getValue()

@@ -11,11 +11,13 @@ $_lang['mxcalendars.event_title_duplicate'] = 'Duplicate Event';
 $_lang['mxcalendars.event_title_remove'] = 'Remove Event';
 $_lang['mxcalendars.tab_events'] = 'Events';
 $_lang['mxcalendars.tab_categories'] = 'Categories';
+$_lang['mxcalendars.tab_locations'] = 'Locations';
 $_lang['mxcalendars.tab_settings'] = 'Global Settings';
 $_lang['mxcalendars.tab_calendars'] = 'Calendars';
 $_lang['mxcalendars.grid_col_context'] = 'Site (context)';
 $_lang['mxcalendars.grid_col_title'] = 'Title';
 $_lang['mxcalendars.grid_col_category'] = 'Category';
+$_lang['mxcalendars.grid_col_location'] = 'Location';
 $_lang['mxcalendars.grid_col_start'] = 'Start Date/Time';
 $_lang['mxcalendars.grid_col_end'] = 'End Date/Time';
 $_lang['mxcalendars.grid_col_repeate'] = 'Repeat/Reoccuring';
@@ -64,6 +66,7 @@ $_lang['mxcalendars.err_remove'] = 'An error occurred while trying to remove the
 $_lang['mxcalendars.err_save'] = 'An error occurred while trying to save the calendar item.';
 $_lang['mxcalendars.err_event_req_name'] = 'Name is required';
 $_lang['mxcalendars.err_event_req_category'] = 'Category is required';
+$_lang['mxcalendars.err_event_req_location'] = 'Location is required';
 $_lang['mxcalendars.err_event_req_startdate'] = 'Start Date is required';
 $_lang['mxcalendars.err_event_req_starttime'] = 'Start Time is required';
 $_lang['mxcalendars.err_event_req_enddate'] = 'End Date is required';
@@ -75,7 +78,7 @@ $_lang['mxcalendars.err_event_req_repeatfrequency'] = 'Repeat Every, frequency, 
 $_lang['mxcalendars.err_event_req_repeatenddate'] = 'Repeat End Date is required for repeating events';
 $_lang['mxcalendars.err_event_req_repeaton'] = 'Occurs on selection is required for weekly repeating events';
 $_lang['mxcalendars.err_event_req_validcat'] = 'No valid category id was found for default or published, please ensure you have a valid category created.';
-$_lang['mxcalendars.notice_no_events'] = 'No events found';
+$_lang['mxcalendars.err_event_req_validloc'] = 'No valid location id was found for default or published, please ensure you have a valid location created.';
 
 $_lang['mxcalendars.mxcalendars_remove_confirm'] = 'Are you sure you want to remove this calendar item?';
 $_lang['mxcalendars.downloads'] = 'Downloads';
@@ -83,6 +86,7 @@ $_lang['mxcalendars.location'] = 'Location';
 $_lang['mxcalendars.search_default_text'] = 'Search events...';
 $_lang['mxcalendars.top_downloaded'] = 'Top Downloaded Calendar Items';
 $_lang['mxcalendars.categoryid_col_label'] = 'Category';
+$_lang['mxcalendars.locationid_col_label'] = 'Location';
 $_lang['mxcalendars.startdate_col_label'] = 'Start Date';
 $_lang['mxcalendars.starttime_col_label'] = 'Start Time';
 $_lang['mxcalendars.enddate_col_label'] = 'End Date';
@@ -96,7 +100,9 @@ $_lang['mxcalendars.label_title'] = 'Name / Title';
 $_lang['mxcalendars.label_enddate'] = 'End Date/Time';
 $_lang['mxcalendars.label_duplicate'] = 'Duplicate';
 $_lang['mxcalendars.label_select_category'] = 'Select a category';
+$_lang['mxcalendars.label_select_location'] = 'Select a location';
 $_lang['mxcalendars.label_select_category_err'] = 'Select a valid category';
+$_lang['mxcalendars.label_select_location_err'] = 'Select a valid location';
 $_lang['mxcalendars.label_calendar_id'] = 'Calendar ID';
 
 $_lang['mxcalendars.label_select_form'] = 'Select a form';
@@ -117,8 +123,8 @@ $_lang['mxcalendars.category_backgroundcss_col_label'] = 'Background Color';
 $_lang['mxcalendars.category_inlinecss_col_label'] = 'Inline CSS';
 $_lang['mxcalendars.category_disabled_col_label'] = 'Disabled';
 $_lang['mxcalendars.category_active_col_label'] = 'Active';
-$_lang['mxcalendars.cateogry_remove_title'] = 'Remove Category';
-$_lang['mxcalendars.cateogry_remove_confirm'] = 'Are you sure you want to remove this category?';
+$_lang['mxcalendars.category_remove_title'] = 'Remove Category';
+$_lang['mxcalendars.category_remove_confirm'] = 'Are you sure you want to remove this category?';
 $_lang['mxcalendars.btn_create_cat'] = 'Create New Category';
 $_lang['mxcalendars.default_category_search'] = "Search categories...";
 $_lang['mxcalendars.menu_update_category'] = 'Update Category';
@@ -127,8 +133,36 @@ $_lang['mxcalendars.menu_remove_category'] = 'Remove Category';
 $_lang['mxcalendars.label_category_heading'] = 'Categories:';
 $_lang['mxcalendars.label_category_viewAll'] = 'View All';
 
+
+//-- Location Management
+$_lang['mxcalendars.location_desc'] = 'Manage the locations that each calendar item could be assigned to. You can also create custom colors for the foreground and background of each location.';
+$_lang['mxcalendars.label_window_create'] = 'Create New Location';
+$_lang['mxcalendars.location_name_col_label'] = 'Name';
+$_lang['mxcalendars.location_zip_col_label'] = 'ZIP';
+$_lang['mxcalendars.location_place_col_label'] = 'City';
+$_lang['mxcalendars.location_link_col_label'] = 'external Link';
+
+$_lang['mxcalendars.location_isdefault_col_label'] = 'Is Default';
+$_lang['mxcalendars.location_foregroundcss_col_label'] = 'Text Color';
+$_lang['mxcalendars.location_backgroundcss_col_label'] = 'Background Color';
+$_lang['mxcalendars.location_inlinecss_col_label'] = 'Inline CSS';
+$_lang['mxcalendars.location_disabled_col_label'] = 'Disabled';
+$_lang['mxcalendars.location_active_col_label'] = 'Active';
+$_lang['mxcalendars.location_remove_title'] = 'Remove location';
+$_lang['mxcalendars.location_remove_confirm'] = 'Are you sure you want to remove this location?';
+$_lang['mxcalendars.btn_create_loc'] = 'Create New Location';
+$_lang['mxcalendars.default_location_search'] = "Search locations...";
+$_lang['mxcalendars.menu_update_location'] = 'Update location';
+$_lang['mxcalendars.menu_remove_location'] = 'Remove location';
+
+$_lang['mxcalendars.label_location_heading'] = 'Locations:';
+$_lang['mxcalendars.label_location_viewAll'] = 'View All';
+
+
+
 //-- Settings friendly names
 $_lang['mxcalendars.set_category_required'] = 'Category required for event';
+$_lang['mxcalendars.set_location_required'] = 'Location required for event';
 $_lang['mxcalendars.set_event_desc_type'] = 'Description field type';
 $_lang['mxcalendars.set_mgr_dateformat'] = 'Date Format';
 $_lang['mxcalendars.set_mgr_timeformat'] = 'Time Format';
