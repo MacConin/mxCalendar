@@ -139,7 +139,7 @@ $xpdo_meta_map['mxCalendarLocations']= array (
     array (
       'class' => 'mxCalendarEvents',
       'local' => 'id',
-      'foreign' => 'locationid',
+      'foreign' => 'location_id',
       'cardinality' => 'many',
       'owner' => 'local',
     ),

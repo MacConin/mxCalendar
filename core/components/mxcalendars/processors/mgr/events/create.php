@@ -82,21 +82,21 @@ if(empty($scriptProperties['categoryid'])){
 
 
 //-- Location check for required by submission and settings
-if(empty($scriptProperties['locationid'])){
+if(empty($scriptProperties['location_id'])){
 
     $default_loc = $modx->getObject('mxCalendarLocations', array(
        'isdefault' => 1
     ));
     
     if($default_loc->get('id')){
-        $scriptProperties['locationid'] = $default_loc->get('id');
+        $scriptProperties['location_id'] = $default_loc->get('id');
     } else {
         //-- Get the first published location
         $default_loc = $modx->getObject('mxCalendarLocations', array(
            'active' => 1
         ));
         if($default_loc->get('id')){
-            $scriptProperties['locationid'] = $default_loc->get('id');
+            $scriptProperties['location_id'] = $default_loc->get('id');
         } else {
             return $modx->error->failure($modx->lexicon('mxcalendars.err_event_req_validloc'));
         }
